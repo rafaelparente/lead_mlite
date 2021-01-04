@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MLite</string>
+    <string name="action_settings">Configurações</string>
+    <string name="title_activity_montar_perfil">Montar Perfil</string>
+    <string name="dialogo_selecao_foto">Selecione a sua foto para o seu perfil.</string>
+    <string name="bem_vindo">Seja bem-vindo!</string>
+    <string name="primeiro_acesso">Este é o seu primeiro acesso. Que tal criar o seu perfil?</string>
+    <string name="toque_imagem">Toque na imagem para escolher sua foto</string>
+    <string name="nome_apelido">Seu nome ou apelido</string>
+    <string name="bt_criar_prefil">Criar perfil</string>
+    <string name="titulo">Título</string>
+    <string name="descricao">Descrição</string>
+    <string name="nao_definido">Não definido</string>
+    <string name="video">Vídeo da Aula</string>
+    <string name="dsc_miniatura_usuario">Imagem do Usuário</string>
+    <string name="dsc_miniatura_aula">Miniatura da Aula</string>
+    <string name="salvar">Salvar</string>
+    <string name="aula">Aula</string>
+    <string name="enunciado">Enunciado</string>
+    <string name="sim">Sim</string>
+    <string name="nao">Não</string>
+    <string name="reiniciar_video">Reiniciar vídeo</string>
+    <string name="iniciar_quiz">Iniciar quiz</string>
+
+    <string name="msg_activity_video_pendente">Wow, a tela de assistir vídeo ainda não está pronta!</string>
+
+</resources>
