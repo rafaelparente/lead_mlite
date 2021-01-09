@@ -23,6 +23,7 @@
     <string name="nao">Não</string>
     <string name="reiniciar_video">Reiniciar vídeo</string>
     <string name="iniciar_quiz">Iniciar quiz</string>
+    <string name="quiz_titulo">Quiz - %s</string>
 
     <string name="msg_activity_video_pendente">Wow, a tela de assistir vídeo ainda não está pronta!</string>
 

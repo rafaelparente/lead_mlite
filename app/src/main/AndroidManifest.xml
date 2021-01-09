@@ -10,9 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".activity.Quiz"
+            android:label="Quiz da Aula" />
+        <activity
+            android:name=".activity.ResultadoQuiz"
+            android:label="Seu desempenho" />
+        <activity
             android:name=".activity.AssistirVideo"
-            android:label="Vídeo da Aula">
-        </activity>
+            android:label="Vídeo da Aula" />
         <activity
             android:name=".activity.Principal"
             android:label="@string/app_name">

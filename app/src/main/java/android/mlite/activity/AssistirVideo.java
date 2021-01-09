@@ -16,8 +16,6 @@ import android.widget.MediaController;
 
 public class AssistirVideo extends Activity {
 
-    private Aula aula;
-
     private CustomVideoView videoView;
 
     private LinearLayout completionControlsLayout;
@@ -31,7 +29,7 @@ public class AssistirVideo extends Activity {
         configureVideo();
 
         Intent intent = getIntent();
-        aula = intent.getParcelableExtra("videoName");
+        Aula aula = intent.getParcelableExtra("aula");
         executarVideo(aula.getVideo());
     }
 
@@ -73,7 +71,9 @@ public class AssistirVideo extends Activity {
     }
 
     public void iniciarQuiz(View view) {
-
+        Intent intent = getIntent();
+        intent.setClass(getApplicationContext(), Quiz.class);
+        startActivity(intent);
     }
 
 }

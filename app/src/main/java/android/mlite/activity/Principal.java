@@ -172,8 +172,9 @@ public class Principal extends Activity {
 	}
 
 	private void iniciarVideoAula(Aula aula) {
-		Intent i = new Intent(getApplicationContext(), AssistirVideo.class);
-		i.putExtra("videoName", aula); startActivity(i);
+		Intent intent = new Intent(getApplicationContext(), AssistirVideo.class);
+		intent.putExtra("aula", aula);
+		startActivity(intent);
 	}
 
 	@Override
