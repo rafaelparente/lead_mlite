@@ -8,7 +8,7 @@
     android:padding="1dp"
     tools:context=".activity.AssistirVideo">
 
-    <VideoView
+    <android.mlite.component.CustomVideoView
         android:id="@+id/videoView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -38,7 +38,7 @@
             android:minWidth="@android:dimen/notification_large_icon_width"
             android:minHeight="@android:dimen/notification_large_icon_height"
             android:onClick="reiniciarVideo"
-            app:srcCompat="@android:drawable/ic_menu_revert" />
+            android:src="@android:drawable/ic_menu_revert" />
 
         <ImageButton
             android:id="@+id/imageButtonEdit"
@@ -50,6 +50,6 @@
             android:minWidth="@android:dimen/notification_large_icon_width"
             android:minHeight="@android:dimen/notification_large_icon_height"
             android:onClick="iniciarQuiz"
-            app:srcCompat="@android:drawable/ic_menu_edit" />
+            android:src="@android:drawable/ic_menu_edit" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

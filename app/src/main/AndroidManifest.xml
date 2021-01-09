@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.AssistirVideo"></activity>
+        <activity
+            android:name=".activity.AssistirVideo"
+            android:label="Vídeo da Aula">
+        </activity>
         <activity
             android:name=".activity.Principal"
             android:label="@string/app_name">
