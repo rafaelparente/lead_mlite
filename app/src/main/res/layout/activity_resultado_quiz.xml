@@ -27,20 +27,45 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#3A8300" />
+        android:textColor="#FF9800" />
 
-    <ScrollView
-        android:id="@+id/sv_questoes"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp" >
+        android:layout_height="wrap_content" >
+
+        <ScrollView
+            android:id="@+id/sv_questoes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_alignParentTop="true"
+            android:layout_above="@+id/button_layout" >
+
+            <LinearLayout
+                android:id="@+id/ll_questoes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+            </LinearLayout>
+
+        </ScrollView>
 
         <LinearLayout
-            android:id="@+id/ll_questoes_correcao"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical" >
+            android:id="@+id/button_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true" >
+
+            <Button
+                android:id="@+id/backToMainButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="goBackToMain"
+                android:text="@string/voltar_menu_principal" />
         </LinearLayout>
-    </ScrollView>
+
+    </RelativeLayout>
 
 </LinearLayout>

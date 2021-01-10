@@ -28,7 +28,7 @@
     <string name="msg_dialog_retornar_video">Tem certeza que deseja retornar ao vídeo?\nATENÇÃO: todas as suas respostas serão perdidas.</string>
     <string name="titulo_dialog_enviar_respostas">Enviar respostas</string>
     <string name="msg_dialog_enviar_respostas">Você tem certeza que deseja enviar as suas respostas para correção?</string>
-
-    <string name="msg_activity_video_pendente">Wow, a tela de assistir vídeo ainda não está pronta!</string>
+    <string name="voltar_menu_principal">Voltar ao menu principal</string>
+    <string name="resumo_desempenho">Acertos : %d de %d (%d%%)</string>
 
 </resources>

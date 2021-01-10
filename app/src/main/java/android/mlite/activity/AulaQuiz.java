@@ -33,8 +33,6 @@ public class AulaQuiz extends Activity {
 
     private int radioGroupUndefinedCount;
 
-    private Quiz quiz;
-
     private Bundle answersBundle = new Bundle();
 
     @Override
@@ -49,11 +47,14 @@ public class AulaQuiz extends Activity {
         TextView tv_titulo_quiz = findViewById(R.id.tv_titulo_quiz);
         tv_titulo_quiz.setText(getString(R.string.quiz_titulo, aula.getTitulo()));
 
-        TextView tv_descricao_quiz = findViewById(R.id.tv_descricao_quiz);
-        tv_descricao_quiz.setText(aula.getDescricao());
-
         containerQuestoes = findViewById(R.id.ll_questoes);
-        quiz = aula.getQuizzes().get(new Random().nextInt(aula.getQuizzes().size()));
+        int quizIndex = new Random().nextInt(aula.getQuizzes().size());
+        intent.putExtra("quizIndex", quizIndex);
+        Quiz quiz = aula.getQuizzes().get(quizIndex);
+
+        TextView tv_descricao_quiz = findViewById(R.id.tv_descricao_quiz);
+        tv_descricao_quiz.setText(quiz.getTitulo());
+
         montarListaQuestoes(quiz.getQuestoes());
     }
 
@@ -141,8 +142,8 @@ public class AulaQuiz extends Activity {
                 .setMessage(R.string.msg_dialog_enviar_respostas)
                 .setPositiveButton(R.string.sim, new DialogInterface.OnClickListener() {
                     @Override public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent(getApplicationContext(), ResultadoQuiz.class);
-                        intent.putExtra("quiz", quiz);
+                        Intent intent = getIntent();
+                        intent.setClass(getApplicationContext(), ResultadoQuiz.class);
                         intent.putExtra("respostas", answersBundle);
                         startActivity(intent);
                         finish();
