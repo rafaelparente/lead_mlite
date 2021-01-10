@@ -24,6 +24,10 @@
     <string name="reiniciar_video">Reiniciar vídeo</string>
     <string name="iniciar_quiz">Iniciar quiz</string>
     <string name="quiz_titulo">Quiz - %s</string>
+    <string name="titulo_dialog_retornar_video">Retornar ao vídeo</string>
+    <string name="msg_dialog_retornar_video">Tem certeza que deseja retornar ao vídeo?\nATENÇÃO: todas as suas respostas serão perdidas.</string>
+    <string name="titulo_dialog_enviar_respostas">Enviar respostas</string>
+    <string name="msg_dialog_enviar_respostas">Você tem certeza que deseja enviar as suas respostas para correção?</string>
 
     <string name="msg_activity_video_pendente">Wow, a tela de assistir vídeo ainda não está pronta!</string>
 

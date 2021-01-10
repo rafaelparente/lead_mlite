@@ -1,9 +1,12 @@
 package android.mlite.pojo;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Questao {
+public class Questao implements Parcelable {
 
 	private Integer id;
 	private Quiz quiz;
@@ -13,6 +16,29 @@ public class Questao {
 	public Questao() {
 		itens = new ArrayList<Item>();
 	}
+
+	protected Questao(Parcel in) {
+		if (in.readByte() == 0) {
+			id = null;
+		} else {
+			id = in.readInt();
+		}
+		quiz = in.readParcelable(Quiz.class.getClassLoader());
+		enunciado = in.readString();
+		itens = in.createTypedArrayList(Item.CREATOR);
+	}
+
+	public static final Creator<Questao> CREATOR = new Creator<Questao>() {
+		@Override
+		public Questao createFromParcel(Parcel in) {
+			return new Questao(in);
+		}
+
+		@Override
+		public Questao[] newArray(int size) {
+			return new Questao[size];
+		}
+	};
 
 	public Integer getId() {
 		return id;
@@ -50,6 +76,24 @@ public class Questao {
 		if (itens != null) {
 			itens.add(item);
 		}
+	}
+
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		if (id == null) {
+			dest.writeByte((byte) 0);
+		} else {
+			dest.writeByte((byte) 1);
+			dest.writeInt(id);
+		}
+		dest.writeParcelable(quiz, flags);
+		dest.writeString(enunciado);
+		dest.writeTypedList(itens);
 	}
 
 }

@@ -33,6 +33,7 @@ public class Aula implements Parcelable {
 		miniatura = in.readString();
 		byte tmpAcessada = in.readByte();
 		acessada = tmpAcessada == 0 ? null : tmpAcessada == 1;
+		quizzes = in.createTypedArrayList(Quiz.CREATOR);
 	}
 
 	public static final Creator<Aula> CREATOR = new Creator<Aula>() {
@@ -119,6 +120,7 @@ public class Aula implements Parcelable {
 		dest.writeString(video);
 		dest.writeString(miniatura);
 		dest.writeByte((byte) (acessada == null ? 0 : acessada ? 1 : 2));
+		dest.writeTypedList(quizzes);
 	}
 
 }

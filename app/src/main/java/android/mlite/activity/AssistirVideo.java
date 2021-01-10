@@ -33,6 +33,12 @@ public class AssistirVideo extends Activity {
         executarVideo(aula.getVideo());
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        reiniciarVideo(null);
+    }
+
     private void configureVideo() {
         MediaController mediaController = new MediaController(this);
         videoView.setMediaController(mediaController);
@@ -72,8 +78,9 @@ public class AssistirVideo extends Activity {
 
     public void iniciarQuiz(View view) {
         Intent intent = getIntent();
-        intent.setClass(getApplicationContext(), Quiz.class);
+        intent.setClass(getApplicationContext(), AulaQuiz.class);
         startActivity(intent);
+        finish();
     }
 
 }
