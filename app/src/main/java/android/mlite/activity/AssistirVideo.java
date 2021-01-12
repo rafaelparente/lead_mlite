@@ -3,6 +3,7 @@ package android.mlite.activity;
 import android.app.Activity;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.media.MediaPlayer;
 import android.mlite.R;
 import android.mlite.component.CustomVideoView;
@@ -11,6 +12,7 @@ import android.mlite.util.Util;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.MediaController;
@@ -83,6 +85,17 @@ public class AssistirVideo extends Activity {
         videoView.setMediaController(mediaController);
         Uri uri = Uri.parse("android.resource://" + getPackageName() + "/raw/" + videoName);
         videoView.setVideoURI(uri);
+
+        int orientation = this.getResources().getConfiguration().orientation;
+        if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+            videoView.setLayoutParams(new LinearLayout.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT));
+        } else {
+            videoView.setLayoutParams(new LinearLayout.LayoutParams(
+                    ViewGroup.LayoutParams.WRAP_CONTENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT));
+        }
 
         videoView.setPlayPauseListener(new CustomVideoView.PlayPauseListener() {
             @Override
