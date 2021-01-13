@@ -26,7 +26,6 @@ import android.widget.Toast;
 
 import android.mlite.R;
 import android.mlite.db.MLiteDatabase;
-import android.mlite.db.MLiteDatabaseMock;
 import android.mlite.pojo.Aula;
 import android.mlite.util.Util;
 
@@ -44,9 +43,8 @@ public class Principal extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_principal);
-		
-		// Inicialização do Mock
-		MLiteDatabaseMock.inicializar();
+
+		MLiteDatabase.inicializar(getApplicationContext());
 
 		// Inicializando o objeto de Preferências Compartilhadas
 		sp = getSharedPreferences(Util.SP_PERFIL_USUARIO, MODE_PRIVATE);
@@ -57,6 +55,12 @@ public class Principal extends Activity {
 		// Montagem da lista de aula na tela com acesso assíncrona ao BD
 		containerAulas = (LinearLayout) findViewById(R.id.ll_lista_aulas);
 		new CarregarAulasTask().execute();
+	}
+
+	@Override
+	protected void onDestroy() {
+		MLiteDatabase.encerrarSessao();
+		super.onDestroy();
 	}
 
 	/**
@@ -188,11 +192,6 @@ public class Principal extends Activity {
 	 * no Banco de Dados.
 	 */
 	private class CarregarAulasTask extends AsyncTask<Void, Void, List<Aula>> {
-
-		@Override
-		protected void onPreExecute() {
-			MLiteDatabase.inicializar(getApplicationContext());
-		}
 
 		@Override
 		protected List<Aula> doInBackground(Void... param) {
