@@ -20,17 +20,11 @@ public class MLiteDatabase {
 	private static SQLiteDatabase db;
 
 	public static void inicializar(Context contexto) {
-		if (helper == null) {
-			helper = new MLiteHelper(contexto);
-		}
-
-		if (db == null) {
-			db = helper.getReadableDatabase();
-		}
+		helper = new MLiteHelper(contexto);
+		db = helper.getReadableDatabase();
 	}
 
 	public static void encerrarSessao() {
-		if (db != null) db.close();
 		if (helper != null) helper.close();
 	}
 
