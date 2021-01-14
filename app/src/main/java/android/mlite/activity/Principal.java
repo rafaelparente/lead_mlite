@@ -124,6 +124,7 @@ public class Principal extends Activity {
 				// ícone da aula (Miniatura do Vídeo)
 				ImageView icone = (ImageView) linhaAula
 						.findViewById(R.id.iv_miniatura_aula);
+				icone.setTag(aula);
 
 				/**
 				 * Definindo o ContentDescription como ID da aula para captura
@@ -171,13 +172,8 @@ public class Principal extends Activity {
 	 * @param v referência ao item da lista de aulas clicado
 	 */
 	public void abrirVideoAula(View v) {
-		int idAula = containerAulas.indexOfChild((View) v.getParent()) + 1;
-		new CarregarAulaTask().execute(idAula);
-	}
-
-	private void iniciarVideoAula(Aula aula) {
 		Intent intent = new Intent(getApplicationContext(), AssistirVideo.class);
-		intent.putExtra("aula", aula);
+		intent.putExtra("aula", (Aula) v.getTag());
 		startActivity(intent);
 	}
 
@@ -201,24 +197,8 @@ public class Principal extends Activity {
 
 		@Override
 		protected void onPostExecute(List<Aula> aulas) {
+			super.onPostExecute(aulas);
 			montarListaAulas(aulas);
-		}
-	}
-
-	private class CarregarAulaTask extends AsyncTask<Integer, Void, Aula> {
-
-		@Override
-		protected Aula doInBackground(Integer... param) {
-			int idAula = param[0];
-			// carregamento da lista de aulas
-			Aula aula = MLiteDatabase.carregarAula(idAula);
-			MLiteDatabase.marcarAulaAcessadas(idAula);
-			return aula;
-		}
-
-		@Override
-		protected void onPostExecute(Aula aula) {
-			iniciarVideoAula(aula);
 		}
 
 	}

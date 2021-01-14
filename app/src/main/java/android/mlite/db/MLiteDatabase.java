@@ -60,37 +60,6 @@ public class MLiteDatabase {
 		return aulas;
 
 	}
-	
-	/**
-	 * Monta a representação de uma aula específica a partir de seu identificador.
-	 * @param idAula identificador da aula
-	 * @return Aula
-	 */
-	public static Aula carregarAula(Integer idAula) {
-
-		String selection = MLiteContract.Aula._ID + " = ?";
-		String[] selectionArgs = { idAula.toString() };
-
-		Cursor cursor = db.query(MLiteContract.Aula.TABLE_NAME, null,
-				selection, selectionArgs, null, null, null);
-
-		while (cursor.moveToNext()) {
-			Aula aula = new Aula();
-			aula.setId(cursor.getInt(cursor.getColumnIndexOrThrow(MLiteContract.Aula._ID)));
-			aula.setTitulo(cursor.getString(cursor.getColumnIndexOrThrow(MLiteContract.Aula.COLUMN_NAME_TITULO)));
-			aula.setDescricao(cursor.getString(cursor.getColumnIndexOrThrow(MLiteContract.Aula.COLUMN_NAME_DESCRICAO)));
-			aula.setVideo(cursor.getString(cursor.getColumnIndexOrThrow(MLiteContract.Aula.COLUMN_NAME_VIDEO)));
-			aula.setMiniatura(cursor.getString(cursor.getColumnIndexOrThrow(MLiteContract.Aula.COLUMN_NAME_MINIATURA)));
-			aula.setAcessada(cursor.getInt(cursor.getColumnIndexOrThrow(MLiteContract.Aula.COLUMN_NAME_ACESSADA)) == 1);
-			aula.setQuizzes(carregarQuizzes(aula.getId()));
-			cursor.close();
-			return aula;
-		}
-
-		cursor.close();
-		return null;
-
-	}
 
 	public static List<Quiz> carregarQuizzes(Integer idAula) {
 
@@ -106,7 +75,6 @@ public class MLiteDatabase {
 			Quiz quiz = new Quiz();
 			quiz.setId(cursor.getInt(cursor.getColumnIndexOrThrow(MLiteContract.Quiz._ID)));
 			quiz.setTitulo(cursor.getString(cursor.getColumnIndexOrThrow(MLiteContract.Quiz.COLUMN_NAME_TITULO)));
-			quiz.setQuestoes(carregarQuestoes(quiz.getId()));
 			quizzes.add(quiz);
 		}
 
@@ -129,7 +97,6 @@ public class MLiteDatabase {
 			Questao questao = new Questao();
 			questao.setId(cursor.getInt(cursor.getColumnIndexOrThrow(MLiteContract.Questao._ID)));
 			questao.setEnunciado(cursor.getString(cursor.getColumnIndexOrThrow(MLiteContract.Questao.COLUMN_NAME_ENUNCIADO)));
-			questao.setItens(carregarItems(questao.getId()));
 			questoes.add(questao);
 		}
 
@@ -140,7 +107,7 @@ public class MLiteDatabase {
 
 	public static List<Item> carregarItems(Integer idQuestao) {
 
-		List<Item> items = new ArrayList<>();
+		List<Item> itens = new ArrayList<>();
 
 		String selection = MLiteContract.Item.COLUMN_NAME_ID_QUESTAO + " = ?";
 		String[] selectionArgs = { idQuestao.toString() };
@@ -154,11 +121,11 @@ public class MLiteDatabase {
 			item.setDescricao(cursor.getString(cursor.getColumnIndexOrThrow(MLiteContract.Item.COLUMN_NAME_DESCRICAO)));
 			item.setFeedback(cursor.getString(cursor.getColumnIndexOrThrow(MLiteContract.Item.COLUMN_NAME_FEEDBACK)));
 			item.setCorreto(cursor.getInt(cursor.getColumnIndexOrThrow(MLiteContract.Item.COLUMN_NAME_CORRETO)) == 1);
-			items.add(item);
+			itens.add(item);
 		}
 
 		cursor.close();
-		return items;
+		return itens;
 
 	}
 	
@@ -169,7 +136,11 @@ public class MLiteDatabase {
 	 * @param idAula identificador da aula
 	 */
 	public static void marcarAulaAcessadas(Integer idAula) {
-		
+		if (db.isReadOnly()) {
+			db = helper.getWritableDatabase();
+		}
+
+
 	}
 
 }

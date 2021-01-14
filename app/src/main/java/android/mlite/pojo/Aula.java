@@ -15,11 +15,9 @@ public class Aula implements Parcelable {
 	private String miniatura;
 	private Boolean acessada;
 	
-	private List<Quiz> quizzes;
+	private List<Quiz> quizzes = null;
 
-	public Aula() {
-		quizzes = new ArrayList<Quiz>();
-	}
+	public Aula() { }
 
 	protected Aula(Parcel in) {
 		if (in.readByte() == 0) {
@@ -51,18 +49,23 @@ public class Aula implements Parcelable {
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	public String getTitulo() {
 		return titulo;
 	}
+
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
+
 	public String getDescricao() {
 		return descricao;
 	}
+
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
@@ -70,6 +73,7 @@ public class Aula implements Parcelable {
 	public Boolean getAcessada() {
 		return acessada;
 	}
+
 	public void setAcessada(Boolean acessada) {
 		this.acessada = acessada;
 	}
@@ -83,8 +87,10 @@ public class Aula implements Parcelable {
 	}
 	
 	public void adicionarQuiz(Quiz quiz) {
-		if (quizzes != null)
-			quizzes.add(quiz);
+		if (quizzes == null) {
+			quizzes = new ArrayList<>();
+		}
+		quizzes.add(quiz);
 	}
 	
 	public String getVideo() {
@@ -98,6 +104,7 @@ public class Aula implements Parcelable {
 	public String getMiniatura() {
 		return miniatura;
 	}
+
 	public void setMiniatura(String miniatura) {
 		this.miniatura = miniatura;
 	}

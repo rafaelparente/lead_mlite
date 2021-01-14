@@ -11,11 +11,10 @@ public class Questao implements Parcelable {
 	private Integer id;
 	private Quiz quiz;
 	private String enunciado;
-	private List<Item> itens;
 
-	public Questao() {
-		itens = new ArrayList<Item>();
-	}
+	private List<Item> itens = null;
+
+	public Questao() { }
 
 	protected Questao(Parcel in) {
 		if (in.readByte() == 0) {
@@ -73,9 +72,10 @@ public class Questao implements Parcelable {
 	}
 
 	public void adicionarItem(Item item) {
-		if (itens != null) {
-			itens.add(item);
+		if (itens == null) {
+			itens = new ArrayList<>();
 		}
+		itens.add(item);
 	}
 
 	@Override

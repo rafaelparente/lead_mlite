@@ -12,11 +12,9 @@ public class Quiz implements Parcelable {
 	private Aula aula;
 	private String titulo;
 
-	private List<Questao> questoes;
+	private List<Questao> questoes = null;
 
-	public Quiz() {
-		questoes = new ArrayList<Questao>();
-	}
+	public Quiz() { }
 
 	protected Quiz(Parcel in) {
 		if (in.readByte() == 0) {
@@ -66,8 +64,10 @@ public class Quiz implements Parcelable {
 	}
 
 	public void adicionarQuestao(Questao questao) {
-		if (questoes != null)
-			questoes.add(questao);
+		if (questoes == null) {
+			questoes = new ArrayList<>();
+		}
+		questoes.add(questao);
 	}
 
 	public List<Questao> getQuestoes() {
