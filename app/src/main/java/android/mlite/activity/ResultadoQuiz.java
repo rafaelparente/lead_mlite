@@ -6,10 +6,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.mlite.R;
+import android.mlite.db.MLiteDatabase;
 import android.mlite.pojo.Aula;
 import android.mlite.pojo.Item;
 import android.mlite.pojo.Questao;
 import android.mlite.pojo.Quiz;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,6 +35,7 @@ public class ResultadoQuiz extends Activity {
 
         Intent intent = getIntent();
         Aula aula = intent.getParcelableExtra("aula");
+        new MarcarAulaAcessadaTask().execute(aula.getId());
 
         TextView tv_titulo_quiz = findViewById(R.id.tv_titulo_quiz);
         tv_titulo_quiz.setText(getString(R.string.quiz_titulo, aula.getTitulo()));
@@ -115,6 +118,16 @@ public class ResultadoQuiz extends Activity {
 
     public void goBackToMain(View view) {
         finish();
+    }
+
+    private class MarcarAulaAcessadaTask extends AsyncTask<Integer, Void, Boolean> {
+
+        @Override
+        protected Boolean doInBackground(Integer... param) {
+            MLiteDatabase.marcarAulaAcessada(param[0]);
+            return true;
+        }
+
     }
 
 }

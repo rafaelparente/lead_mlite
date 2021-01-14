@@ -1,6 +1,7 @@
 package android.mlite.db;
 
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -135,12 +136,23 @@ public class MLiteDatabase {
 	 * acessadas pelo número total de questões do banco de dados.
 	 * @param idAula identificador da aula
 	 */
-	public static void marcarAulaAcessadas(Integer idAula) {
+	public static void marcarAulaAcessada(Integer idAula) {
 		if (db.isReadOnly()) {
 			db = helper.getWritableDatabase();
 		}
 
+		ContentValues values = new ContentValues();
+		values.put(MLiteContract.Aula.COLUMN_NAME_ACESSADA, 1);
 
+		String selection = MLiteContract.Aula._ID + " = ?";
+		String[] selectionArgs = { idAula.toString() };
+
+		db.update(
+				MLiteContract.Aula.TABLE_NAME,
+				values,
+				selection,
+				selectionArgs
+		);
 	}
 
 }
