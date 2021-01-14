@@ -10,23 +10,26 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activity.AulaQuiz"
-            android:label="Quiz da Aula" />
-        <activity
-            android:name=".activity.ResultadoQuiz"
-            android:label="Seu desempenho" />
-        <activity
-            android:name=".activity.AssistirVideo"
-            android:label="Vídeo da Aula" />
-        <activity
-            android:name=".activity.Principal"
-            android:label="@string/app_name">
+            android:name=".activity.MontarPerfil"
+            android:label="MLite">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activity.Principal"
+            android:label="MLite" />
+        <activity
+            android:name=".activity.AssistirVideo"
+            android:label="Vídeo da Aula" />
+        <activity
+            android:name=".activity.AulaQuiz"
+            android:label="Quiz da Aula" />
+        <activity
+            android:name=".activity.ResultadoQuiz"
+            android:label="Seu desempenho" />
     </application>
 
 </manifest>
