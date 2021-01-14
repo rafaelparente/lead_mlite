@@ -82,9 +82,7 @@ public class MLiteDatabase {
 			aula.setVideo(cursor.getString(cursor.getColumnIndexOrThrow(MLiteContract.Aula.COLUMN_NAME_VIDEO)));
 			aula.setMiniatura(cursor.getString(cursor.getColumnIndexOrThrow(MLiteContract.Aula.COLUMN_NAME_MINIATURA)));
 			aula.setAcessada(cursor.getInt(cursor.getColumnIndexOrThrow(MLiteContract.Aula.COLUMN_NAME_ACESSADA)) == 1);
-			for (Quiz quiz : carregarQuizzes(aula.getId())) {
-				aula.adicionarQuiz(quiz);
-			}
+			aula.setQuizzes(carregarQuizzes(aula.getId()));
 			cursor.close();
 			return aula;
 		}
@@ -108,9 +106,7 @@ public class MLiteDatabase {
 			Quiz quiz = new Quiz();
 			quiz.setId(cursor.getInt(cursor.getColumnIndexOrThrow(MLiteContract.Quiz._ID)));
 			quiz.setTitulo(cursor.getString(cursor.getColumnIndexOrThrow(MLiteContract.Quiz.COLUMN_NAME_TITULO)));
-			for (Questao questao : carregarQuestoes(quiz.getId())) {
-				quiz.adicionarQuestao(questao);
-			}
+			quiz.setQuestoes(carregarQuestoes(quiz.getId()));
 			quizzes.add(quiz);
 		}
 
@@ -133,9 +129,7 @@ public class MLiteDatabase {
 			Questao questao = new Questao();
 			questao.setId(cursor.getInt(cursor.getColumnIndexOrThrow(MLiteContract.Questao._ID)));
 			questao.setEnunciado(cursor.getString(cursor.getColumnIndexOrThrow(MLiteContract.Questao.COLUMN_NAME_ENUNCIADO)));
-			for (Item item : carregarItems(questao.getId())) {
-				questao.adicionarItem(item);
-			}
+			questao.setItens(carregarItems(questao.getId()));
 			questoes.add(questao);
 		}
 
@@ -158,7 +152,7 @@ public class MLiteDatabase {
 			Item item = new Item();
 			item.setId(cursor.getInt(cursor.getColumnIndexOrThrow(MLiteContract.Item._ID)));
 			item.setDescricao(cursor.getString(cursor.getColumnIndexOrThrow(MLiteContract.Item.COLUMN_NAME_DESCRICAO)));
-			item.setFeddback(cursor.getString(cursor.getColumnIndexOrThrow(MLiteContract.Item.COLUMN_NAME_FEEDBACK)));
+			item.setFeedback(cursor.getString(cursor.getColumnIndexOrThrow(MLiteContract.Item.COLUMN_NAME_FEEDBACK)));
 			item.setCorreto(cursor.getInt(cursor.getColumnIndexOrThrow(MLiteContract.Item.COLUMN_NAME_CORRETO)) == 1);
 			items.add(item);
 		}

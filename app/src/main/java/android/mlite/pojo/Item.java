@@ -8,7 +8,7 @@ public class Item implements Parcelable {
 	private Integer id;
 	private Questao questao;
 	private String descricao;
-	private String feddback;
+	private String feedback;
 	private Boolean correto;
 
 	public Item() { }
@@ -21,7 +21,7 @@ public class Item implements Parcelable {
 		}
 		questao = in.readParcelable(Questao.class.getClassLoader());
 		descricao = in.readString();
-		feddback = in.readString();
+		feedback = in.readString();
 		byte tmpCorreto = in.readByte();
 		correto = tmpCorreto == 0 ? null : tmpCorreto == 1;
 	}
@@ -62,12 +62,12 @@ public class Item implements Parcelable {
 		this.descricao = descricao;
 	}
 
-	public String getFeddback() {
-		return feddback;
+	public String getFeedback() {
+		return feedback;
 	}
 
-	public void setFeddback(String feddback) {
-		this.feddback = feddback;
+	public void setFeedback(String feedback) {
+		this.feedback = feedback;
 	}
 
 	public Boolean getCorreto() {
@@ -93,7 +93,7 @@ public class Item implements Parcelable {
 		}
 		dest.writeParcelable(questao, flags);
 		dest.writeString(descricao);
-		dest.writeString(feddback);
+		dest.writeString(feedback);
 		dest.writeByte((byte) (correto == null ? 0 : correto ? 1 : 2));
 	}
 

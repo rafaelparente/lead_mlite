@@ -55,25 +55,25 @@ public class MLiteDatabaseMock {
 		Item i1 = new Item();
 		i1.setId(++CONT_ITEM);
 		i1.setDescricao("Hidropónica.");
-		i1.setFeddback("Incorreto. Esse termo corresponde a uma técnica de cultivo de vegetais sem solo.");
+		i1.setFeedback("Incorreto. Esse termo corresponde a uma técnica de cultivo de vegetais sem solo.");
 		i1.setCorreto(false);
 		
 		Item i2 = new Item();
 		i2.setId(++CONT_ITEM);
 		i2.setDescricao("Termoelétrica.");
-		i2.setFeddback("Incorreto. Esse tipo de usina produz energia a partir da queima de combustíveis.");
+		i2.setFeedback("Incorreto. Esse tipo de usina produz energia a partir da queima de combustíveis.");
 		i2.setCorreto(false);
 		
 		Item i3 = new Item();
 		i3.setId(++CONT_ITEM);
 		i3.setDescricao("Nuclear.");
-		i3.setFeddback("Incorreto. Esse tipo de usina utiliza elementos radioativos como o Urânio para produzir energia.");
+		i3.setFeedback("Incorreto. Esse tipo de usina utiliza elementos radioativos como o Urânio para produzir energia.");
 		i3.setCorreto(false);
 		
 		Item i4 = new Item();
 		i4.setId(++CONT_ITEM);
 		i4.setDescricao("Hidroelétrica.");
-		i4.setFeddback("Correto! O nome hidroelétrica vem da composição de Hidro (água) e Elétrica (eletricidade).");
+		i4.setFeedback("Correto! O nome hidroelétrica vem da composição de Hidro (água) e Elétrica (eletricidade).");
 		i4.setCorreto(true);
 		
 		q1.adicionarItem(i1);
@@ -90,25 +90,25 @@ public class MLiteDatabaseMock {
 		Item i5 = new Item();
 		i5.setId(++CONT_ITEM);
 		i5.setDescricao("Benjamin Franklin");
-		i5.setFeddback("Correto! Benjamin Franklin viveu entre os séculos XVII e XVIII.");
+		i5.setFeedback("Correto! Benjamin Franklin viveu entre os séculos XVII e XVIII.");
 		i5.setCorreto(true);
 		
 		Item i6 = new Item();
 		i6.setId(++CONT_ITEM);
 		i6.setDescricao("George Washington");
-		i6.setFeddback("Incorreto. Geroge Washington foi o primeiro presidente dos Estados Unidos.");
+		i6.setFeedback("Incorreto. Geroge Washington foi o primeiro presidente dos Estados Unidos.");
 		i6.setCorreto(false);
 		
 		Item i7 = new Item();
 		i7.setId(++CONT_ITEM);
 		i7.setDescricao("Thomas Edison");
-		i7.setFeddback("Incorreto. Thomas Edison é considerado o criador da lâmpada elétrica.");
+		i7.setFeedback("Incorreto. Thomas Edison é considerado o criador da lâmpada elétrica.");
 		i7.setCorreto(false);
 		
 		Item i8 = new Item();
 		i8.setId(++CONT_ITEM);
 		i8.setDescricao("Graham Bell");
-		i8.setFeddback("Incorreto. Bell foi o inventor do telefone.");
+		i8.setFeedback("Incorreto. Bell foi o inventor do telefone.");
 		i8.setCorreto(false);
 		
 		q2.adicionarItem(i5);
@@ -125,13 +125,13 @@ public class MLiteDatabaseMock {
 		Item i9 = new Item();
 		i9.setId(++CONT_ITEM);
 		i9.setDescricao("Sim. Essa categoria chama-se Energia Eólica.");
-		i9.setFeddback("Correto! A produção de energia eólica é bastante utilizada por todo o mundo.");
+		i9.setFeedback("Correto! A produção de energia eólica é bastante utilizada por todo o mundo.");
 		i9.setCorreto(true);
 		
 		Item i10 = new Item();
 		i10.setId(++CONT_ITEM);
 		i10.setDescricao("Não, ainda não há como transformar vento em energia elétrica.");
-		i10.setFeddback("Incorreto. A energia produzida com a força dos ventos chama-se eólica e é bastante utilizada no nordeste Brasileiro.");
+		i10.setFeedback("Incorreto. A energia produzida com a força dos ventos chama-se eólica e é bastante utilizada no nordeste Brasileiro.");
 		i10.setCorreto(false);
 		
 		q3.adicionarItem(i9);
@@ -167,25 +167,25 @@ public class MLiteDatabaseMock {
 		Item i13 = new Item();
 		i13.setId(++CONT_ITEM);
 		i13.setDescricao("A grama verde.");
-		i13.setFeddback("Incorreto. A grama não gera arco-íris.");
+		i13.setFeedback("Incorreto. A grama não gera arco-íris.");
 		i13.setCorreto(false);
 		
 		Item i14 = new Item();
 		i14.setId(++CONT_ITEM);
 		i14.setDescricao("Gotículas de água no ar.");
-		i14.setFeddback("Correto! Gotículas de água no ar são a principal forma de ocorrência de arco-íris.");
+		i14.setFeedback("Correto! Gotículas de água no ar são a principal forma de ocorrência de arco-íris.");
 		i14.setCorreto(true);
 		
 		Item i15 = new Item();
 		i15.setId(++CONT_ITEM);
 		i15.setDescricao("Um pedaço de madeira.");
-		i15.setFeddback("Incorreto. A luz do sol não pode atravessar um pedaço de madeira.");
+		i15.setFeedback("Incorreto. A luz do sol não pode atravessar um pedaço de madeira.");
 		i15.setCorreto(false);
 		
 		Item i16 = new Item();
 		i16.setId(++CONT_ITEM);
 		i16.setDescricao("Um banco de areia.");
-		i16.setFeddback("Incorreto. A areia não tem capacidade de gerar arco-íris.");
+		i16.setFeedback("Incorreto. A areia não tem capacidade de gerar arco-íris.");
 		i16.setCorreto(false);
 		
 		q4.adicionarItem(i13);
@@ -202,25 +202,25 @@ public class MLiteDatabaseMock {
 		Item i17 = new Item();
 		i17.setId(++CONT_ITEM);
 		i17.setDescricao("Diapasão.");
-		i17.setFeddback("Incorreto. Diapasão é uma peça metálica que auxilia a afinação de instrumentos musicais.");
+		i17.setFeedback("Incorreto. Diapasão é uma peça metálica que auxilia a afinação de instrumentos musicais.");
 		i17.setCorreto(false);
 		
 		Item i18 = new Item();
 		i18.setId(++CONT_ITEM);
 		i18.setDescricao("Fusão.");
-		i18.setFeddback("Incorreto. A fusão corresponde a um processo de mudança de estado físico de um material.");
+		i18.setFeedback("Incorreto. A fusão corresponde a um processo de mudança de estado físico de um material.");
 		i18.setCorreto(false);
 		
 		Item i19 = new Item();
 		i19.setId(++CONT_ITEM);
 		i19.setDescricao("Inflação.");
-		i19.setFeddback("Incorreto. A inflação é um efeito econômico de variação de preços.");
+		i19.setFeedback("Incorreto. A inflação é um efeito econômico de variação de preços.");
 		i19.setCorreto(false);
 		
 		Item i20 = new Item();
 		i20.setId(++CONT_ITEM);
 		i20.setDescricao("Refração.");
-		i20.setFeddback("Correto! A refração consiste na divisão das componentes da luz ao atravessar um prisma pela mudança de direção dos raios de luz.");
+		i20.setFeedback("Correto! A refração consiste na divisão das componentes da luz ao atravessar um prisma pela mudança de direção dos raios de luz.");
 		i20.setCorreto(false);
 		
 		q5.adicionarItem(i17);

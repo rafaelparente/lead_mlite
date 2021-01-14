@@ -87,7 +87,7 @@ public class ResultadoQuiz extends Activity {
 
                         ImageView feedbackIcon = linhaItem.findViewById(R.id.imageView);
                         TextView feedbackText = linhaItem.findViewById(R.id.feedback);
-                        feedbackText.setText(item.getFeddback());
+                        feedbackText.setText(item.getFeedback());
                         if (item.getCorreto()) {
                             feedbackIcon.setImageResource(R.drawable.correto);
                             feedbackText.setTextColor(Color.parseColor("#FF3F51B5"));
