@@ -39,6 +39,8 @@ public class Principal extends Activity {
 	// layout que armazena as aulas
 	private LinearLayout containerAulas;
 
+	private ImageView lastClickedImageView = null;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -55,6 +57,32 @@ public class Principal extends Activity {
 		// Montagem da lista de aula na tela com acesso assíncrona ao BD
 		containerAulas = (LinearLayout) findViewById(R.id.ll_lista_aulas);
 		new CarregarAulasTask().execute();
+	}
+
+	@Override
+	protected void onStart() {
+		super.onStart();
+		if (lastClickedImageView != null) {
+			Aula aula = (Aula) lastClickedImageView.getTag();
+			Aula aulaAtualizada = MLiteDatabase.carregarAula(aula.getId());
+
+			if (aulaAtualizada.getAcessada() && !aula.getAcessada()) {
+				lastClickedImageView.setTag(aulaAtualizada);
+				lastClickedImageView.setAlpha(Util.TRANSPARENTE_30);
+				float lastAulasAcessadasCount = progresso * containerAulas.getChildCount();
+				progresso = (lastAulasAcessadasCount + 1.0f) / containerAulas.getChildCount();
+
+				DecimalFormat df = new DecimalFormat("#0");
+				TextView progressoTexto = (TextView) findViewById(R.id.tv_progresso_usuario);
+				progressoTexto.setText("Progresso: " + df.format(progresso * 100)
+						+ "%");
+
+				ProgressBar progressoBarra = (ProgressBar) findViewById(R.id.pb_progresso_usuario);
+				progressoBarra.setProgress((int) (progresso * 100));
+			}
+
+			lastClickedImageView = null;
+		}
 	}
 
 	@Override
@@ -157,12 +185,12 @@ public class Principal extends Activity {
 			progresso = aulasAcessadas / listaAulas.size();
 
 			DecimalFormat df = new DecimalFormat("#0");
-			TextView progessoTexto = (TextView) findViewById(R.id.tv_progresso_usuario);
-			progessoTexto.setText("Progresso: " + df.format(progresso * 100)
+			TextView progressoTexto = (TextView) findViewById(R.id.tv_progresso_usuario);
+			progressoTexto.setText("Progresso: " + df.format(progresso * 100)
 					+ "%");
 
-			ProgressBar progessoBarra = (ProgressBar) findViewById(R.id.pb_progresso_usuario);
-			progessoBarra.setProgress((int) (progresso * 100));
+			ProgressBar progressoBarra = (ProgressBar) findViewById(R.id.pb_progresso_usuario);
+			progressoBarra.setProgress((int) (progresso * 100));
 
 		}
 	}
@@ -175,6 +203,7 @@ public class Principal extends Activity {
 		Intent intent = new Intent(getApplicationContext(), AssistirVideo.class);
 		intent.putExtra("aula", (Aula) v.getTag());
 		startActivity(intent);
+		lastClickedImageView = (ImageView) v;
 	}
 
 	@Override

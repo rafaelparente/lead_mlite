@@ -155,4 +155,31 @@ public class MLiteDatabase {
 		);
 	}
 
+
+	public static Aula carregarAula(Integer idAula) {
+
+		String selection = MLiteContract.Aula._ID + " = ?";
+		String[] selectionArgs = { idAula.toString() };
+
+		Cursor cursor = db.query(MLiteContract.Aula.TABLE_NAME,
+				null, selection, selectionArgs,
+				null, null, null);
+
+		while (cursor.moveToNext()) {
+			Aula aula = new Aula();
+			aula.setId(cursor.getInt(cursor.getColumnIndexOrThrow(MLiteContract.Aula._ID)));
+			aula.setTitulo(cursor.getString(cursor.getColumnIndexOrThrow(MLiteContract.Aula.COLUMN_NAME_TITULO)));
+			aula.setDescricao(cursor.getString(cursor.getColumnIndexOrThrow(MLiteContract.Aula.COLUMN_NAME_DESCRICAO)));
+			aula.setVideo(cursor.getString(cursor.getColumnIndexOrThrow(MLiteContract.Aula.COLUMN_NAME_VIDEO)));
+			aula.setMiniatura(cursor.getString(cursor.getColumnIndexOrThrow(MLiteContract.Aula.COLUMN_NAME_MINIATURA)));
+			aula.setAcessada(cursor.getInt(cursor.getColumnIndexOrThrow(MLiteContract.Aula.COLUMN_NAME_ACESSADA)) == 1);
+			cursor.close();
+			return aula;
+		}
+
+		cursor.close();
+		return null;
+
+	}
+
 }
