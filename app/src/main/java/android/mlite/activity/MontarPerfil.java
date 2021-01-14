@@ -85,12 +85,14 @@ MontarPerfil extends Activity {
 	public void selecionarImagem(View v) {
 
 		// Abertura da galeria via Intent
-		Intent i = new Intent(Intent.ACTION_PICK);
-		i.setType("image/*");
+		Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+		intent.addCategory(Intent.CATEGORY_OPENABLE);
+		intent.setType("image/*");
 		startActivityForResult(
-				Intent.createChooser(i,
+				Intent.createChooser(intent,
 						getResources().getText(R.string.dialogo_selecao_foto)),
 				Util.RESULT_SELECIONAR_IMAGEM);
+
 	}
 
 	@Override
